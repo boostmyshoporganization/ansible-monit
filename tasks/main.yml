@@ -1,0 +1,11 @@
+---
+
+- name: Install the monit package
+  apt: name=monit state=present
+
+- name: Configure monit
+  template: src=monitrc dest=/etc/monit/monitrc
+  notify: restart monit
+
+- name: Check if the monit service is started
+  service: name=monit state=started
