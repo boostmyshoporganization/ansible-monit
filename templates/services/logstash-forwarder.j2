@@ -1,0 +1,4 @@
+check process logstash-forwarder with pidfile /var/run/logstash-forwarder.pid
+  start program = "/etc/init.d/logstash-forwarder start"
+  stop  program = "/etc/init.d/logstash-forwarder stop"
+  if 2 restarts within 2 cycles then timeout

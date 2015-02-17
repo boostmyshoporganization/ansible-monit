@@ -1,0 +1,21 @@
+---
+
+- name: Install the monit package
+  apt: name=monit state=present
+  tags: monit
+
+- name: Configure monit
+  template: src=monitrc dest=/etc/monit/monitrc
+  notify: restart monit
+  tags: monit
+
+- name: Add service
+  template: src=services/{{ item }}.j2 dest=/etc/monit/conf.d/{{ item }}
+  with_items: monit.services
+  notify: restart monit
+  tags: monit
+  when: monit.services is defined
+
+- name: Check if the monit service is started
+  service: name=monit state=started
+  tags: monit

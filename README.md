@@ -21,4 +21,7 @@ monit:
   email: contact@example.com
   user: admin
   password: my_password
+  services:
+    - cron
+    - ssh
 ```

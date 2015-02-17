@@ -1,0 +1,6 @@
+check process vpnc with pidfile /var/run/vpnc/pid
+  start program = "/etc/init.d/vpnc start"
+  stop  program = "/etc/init.d/vpnc stop"
+  if failed host github.com port 80 then restart
+  if failed host 10.0.2.191 port 2283 then restart
+  if 2 restarts within 2 cycles then timeout

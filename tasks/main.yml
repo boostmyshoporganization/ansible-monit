@@ -1,14 +1,4 @@
 ---
 
-- name: Install the monit package
-  apt: name=monit state=present
-  tags: monit
-
-- name: Configure monit
-  template: src=monitrc dest=/etc/monit/monitrc
-  notify: restart monit
-  tags: monit
-
-- name: Check if the monit service is started
-  service: name=monit state=started
-  tags: monit
+- include: debian.yml
+  when: ansible_distribution == 'Debian'

@@ -1,0 +1,4 @@
+check process rabbitmq with pidfile /var/run/rabbitmq/pid
+group rabbitmq-server
+start program = "/etc/init.d/rabbitmq-server start"
+stop program = "/etc/init.d/rabbitmq-server stop"
